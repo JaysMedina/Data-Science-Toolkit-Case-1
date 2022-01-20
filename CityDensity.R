@@ -29,5 +29,5 @@ write.csv(regCity %>%
             group_by(Region) %>% slice(1:5),'citypopdensity.csv')
 
 regCity %>%
-  arrange(desc(density)) %>%
-  group_by(Region) %>% slice(1:5)
+  arrange(desc(density)) %>% #arranges values based on announced factor 'density'
+  group_by(Region) %>% slice(1:5) #takes first 5 values
