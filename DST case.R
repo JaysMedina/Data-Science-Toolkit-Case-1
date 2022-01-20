@@ -46,3 +46,5 @@ regCity = merge(x=regCity,y=reg,by=c("Region"), all= TRUE)
 regCity$density = regCity$cityPop/regCity$cityLand
 
 write.csv(top_n(regCity,5,density),'citypopdensity.csv')
+
+
