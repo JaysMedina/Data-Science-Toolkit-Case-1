@@ -1,4 +1,5 @@
 #4
+library(plyr)
 library(dplyr)
 
 #sums up each city's population
@@ -23,4 +24,10 @@ regCity$cityPop = citySum$x
 regCity = merge(x=regCity,y=reg,by=c("Region"), all= TRUE)
 regCity$density = regCity$cityPop/regCity$cityLand
 
-write.csv(top_n(regCity,5,density),'citypopdensity.csv')
+write.csv(regCity %>%
+            arrange(desc(density)) %>%
+            group_by(Region) %>% slice(1:5),'citypopdensity.csv')
+
+regCity %>%
+  arrange(desc(density)) %>%
+  group_by(Region) %>% slice(1:5)
